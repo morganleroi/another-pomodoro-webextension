@@ -1,0 +1,1 @@
+window.oneMinuteInMs = 1000 * 60;

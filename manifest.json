@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "homepage_url": "https://example.org/my-addon",
+  "name": "Another-Pomodoro",
+  "version": "1.0",
+  "description": "Un autre pomodoro ...",
+  "icons": {
+    "48": "icon.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "38": "icon.png"
+    },
+    "default_title": "Start a new pomodoro !"
+  },
+  "permissions": [
+    "alarms",
+    "notifications",
+    "storage",
+    "activeTab"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  }
+}
