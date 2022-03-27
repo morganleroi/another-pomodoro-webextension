@@ -3,16 +3,15 @@
 	"startNewPomodoro": {
 		"prefix": "startNewPomodoro",
 		"body": [
-			"let minuteLeft, intervalId;",
+			"let minuteLeft;",
 			"",
-			"const startNewPomodoro = () => {",
+			"function startNewPomodoro() {",
 			"  minuteLeft = 5",
 			"  browser.browserAction.setBadgeText({ text: minuteLeft.toString() });",
-			"  intervalId = setInterval(handlePomodoro, window.oneMinuteInMs);",
-			"  //browser.alarms.create(\"Times Up\", { periodInMinutes: window.oneMinuteInMs });",
+			"  browser.alarms.create(\"Times Up\", { periodInMinutes: window.oneMinute });",
 			"}",
 			"",
-			"const handlePomodoro = () => {",
+			"function handlePomodoro() {",
 			"  minuteLeft--;",
 			"  browser.browserAction.setBadgeText({ text: minuteLeft.toString() });",
 			"};"
@@ -40,7 +39,7 @@
 	"openTab": {
 		"prefix": "openTab",
 		"body": [
-			"const openBreakTab = () => {",
+			"function openBreakTab() {",
 			"  browser.tabs.create({ url: \"https://www.nytimes.com/games/wordle/index.html\" });",
 			"  browser.notifications.clear(\"TimesUp\");",
 			"};"
@@ -51,8 +50,7 @@
 		"prefix": "newNotification",
 		"body": [
 			"  if (minuteLeft === 0) {",
-			"    clearInterval(intervalId);",
-			"    // browser.alarms.clear(\"Times Up\");",
+			"    browser.alarms.clear(\"Times Up\");",
 			"",
 			"    browser.notifications.create(\"TimesUp\",",
 			"      {",
@@ -80,5 +78,21 @@
 			"userParams = await browser.storage.local.get(\"user\") as UserPreferences;"
 		],
 		"description": "loadUserPref"
+	},
+	"hellodevoxx": {
+		"prefix": "hellodevoxx",
+		"body": [
+			"browser.runtime.onInstalled.addListener(onInstalled);",
+			"browser.runtime.onStartup.addListener(onStartup);",
+			"",
+			"function onInstalled() {",
+			"    console.log(\"Hello Devoxx & App Installed !\");",
+			"}",
+			"",
+			"function onStartup() {",
+			"    console.log(\"Hello Devoxx & App Started !\");",
+			"}"
+		],
+		"description": "hellodevoxx"
 	}
 }

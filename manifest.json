@@ -13,12 +13,7 @@
     },
     "default_title": "Start a new pomodoro !"
   },
-  "permissions": [
-    "alarms",
-    "notifications",
-    "storage",
-    "activeTab"
-  ],
+  "permissions": [],
   "background": {
     "scripts": [
       "background.js"

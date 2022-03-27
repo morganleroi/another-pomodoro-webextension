@@ -4,13 +4,13 @@ import { copy } from 'esbuild-plugin-copy';
 import * as esbuild from "esbuild";
 
 esbuild.build({
-    entryPoints: ['src/appendAlert.ts', 'src/background.ts'],
+    entryPoints: ['src/background.ts'],
     bundle: true,
     outdir: "dist",
     inject: ["config/config.prod.ts"],
     plugins: [
         copy({
-            assets: {
+            assets: {   
                 from: ['./public/*', 'manifest.json'],
                 to: ['./dist'],
             }

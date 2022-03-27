@@ -1,1 +1,1 @@
-window.oneMinuteInMs = 1000;
+window.oneMinute = 1/60;
