@@ -13,7 +13,10 @@
     },
     "default_title": "Start a new pomodoro !"
   },
-  "permissions": [],
+  "permissions": [
+    "notifications",
+    "alarms"
+  ],
   "background": {
     "scripts": [
       "background.js"
