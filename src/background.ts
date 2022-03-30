@@ -22,8 +22,17 @@ const handlePomodoro = () => {
         iconUrl: browser.runtime.getURL("icon.png")
       });
     browser.browserAction.setBadgeText({ text: "" });
+
+    forceTakeABreak();
   }
 };
+
+async function forceTakeABreak() {
+  await browser.tabs.executeScript({ file: "appendAlert.js" });
+  const tab = await browser.tabs.query({ active: true, currentWindow: true });
+  browser.tabs.sendMessage(tab[0].id, { message: "Let's take a break", breakLink: "https://www.nytimes.com/games/wordle/index.html" });
+}
+
 
 const openBreakTab = () => {
   browser.tabs.create({ url: "https://www.nytimes.com/games/wordle/index.html" });
@@ -39,7 +48,9 @@ function onStartup() {
 }
 
 browser.alarms.onAlarm.addListener(handlePomodoro);
-browser.notifications.onClicked.addListener(openBreakTab)
+if(browser.notifications) {
+	browser.notifications.onClicked.addListener(openBreakTab);
+}
 browser.browserAction.onClicked.addListener(startNewPomodoro);
 browser.runtime.onInstalled.addListener(onInstalled)
 browser.runtime.onStartup.addListener(onStartup);

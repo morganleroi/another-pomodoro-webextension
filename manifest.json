@@ -15,7 +15,8 @@
   },
   "permissions": [
     "notifications",
-    "alarms"
+    "<all_urls>",
+	"alarms"
   ],
   "background": {
     "scripts": [
