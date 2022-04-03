@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <title>Customize your Pomodoro</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Another pomodoro Extension ...</h1>
+        <form>
+            <div class="alert alert-success" id="user-pref-saved" style="display: none;" role="alert">
+                Saved !
+              </div>
+            <div class="form-group row">
+                <label for="pomodoroDurationInMin" class="col-sm-3 col-form-label">⏰ Pomodoro duration (<span
+                        id="pomodoroDurationValue"></span> min)</label>
+                <div class="col-sm-9">
+                    <input type="range" style="width:100%" class="form-range" min="1" max="25"
+                        id="pomodoroDurationInMin">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="takeABreakMessage" class="col-sm-3 col-form-label">🛏️ Take a break message</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="takeABreakMessage" placeholder="Let's take a break!">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="breakUrl" class="col-sm-3 col-form-label">🔖 Break Url</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="breakUrl">
+                </div>
+            </div>
+            <fieldset class="form-group">
+                <div class="row">
+                    <legend class="col-form-label col-sm-3 pt-0">🔔 End of Pomodoro</legend>
+                    <div class="col-sm-9">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="useNotification">
+                            <label class="form-check-label" for="useNotification">Activate browser notification after
+                                each
+                                pomodoro.</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="forceBreak">
+                            <label class="form-check-label" for="forceBreak">Activate "Force Break" mode.</label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+
+    <script src="options.js" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

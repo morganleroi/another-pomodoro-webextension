@@ -4,7 +4,7 @@ import { copy } from 'esbuild-plugin-copy';
 import * as esbuild from "esbuild";
 
 esbuild.build({
-    entryPoints: ['src/background.ts', 'src/appendAlert.ts'],
+    entryPoints: ['src/background.ts', 'src/appendAlert.ts', 'src/options.ts'],
     bundle: true,
     outdir: "dist",
     inject: ["config/config.dev.ts"],
