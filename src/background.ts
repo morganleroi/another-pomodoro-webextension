@@ -9,11 +9,13 @@ export interface UserPreferences {
 }
 
 let minuteLeft: number, userPref: UserPreferences;
+let intervalId;
 
 const startNewPomodoro = () => {
   minuteLeft = userPref.pomodoroDurationInMin;
   browser.browserAction.setBadgeText({ text: minuteLeft.toString() });
-  browser.alarms.create("Times Up", { periodInMinutes: window.oneMinute });
+  //browser.alarms.create("Times Up", { periodInMinutes: window.oneMinute });
+  intervalId = setInterval(handlePomodoro, 1000);
 }
 
 const handlePomodoro = () => {
@@ -21,7 +23,8 @@ const handlePomodoro = () => {
   browser.browserAction.setBadgeText({ text: minuteLeft.toString() });
 
   if (minuteLeft === 0) {
-    browser.alarms.clear("Times Up");
+    //browser.alarms.clear("Times Up");
+    clearInterval(intervalId);
 
     if (browser.notifications && userPref.useNotification) {
       browser.notifications.create("TimesUp",
@@ -79,7 +82,7 @@ async function updateUserParams(changes) {
   }
 }
 
-browser.alarms.onAlarm.addListener(handlePomodoro);
+//browser.alarms.onAlarm.addListener(handlePomodoro);
 if (browser.notifications) {
   browser.notifications.onClicked.addListener(openBreakTab);
 }
