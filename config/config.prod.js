@@ -1,1 +1,0 @@
-window.oneMinute = 1;
